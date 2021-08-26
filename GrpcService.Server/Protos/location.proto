@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcService.Server";
+
+package location;
+
+service LocationSearch{
+  rpc GetLocationByStringContains(GetLocationStringRequest) returns (stream LocationResponse);
+}
+
+message GetLocationStringRequest{
+  string text = 1;
+}
+
+message LocationResponse{
+  int32 id = 1;
+  string name = 2;
+  string type = 3;
+  float latitude = 4;
+  float longitude = 5;
+  int32 distance = 6;
+}
